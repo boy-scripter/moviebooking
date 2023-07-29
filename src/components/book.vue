@@ -14,16 +14,16 @@
       {{ state.book.error }}
     </p>
     <div class="text-center">
-      <RouterLink to="/payment" class="btn btn-success price m-4">
+      <div @click="book" class="btn btn-success price m-4">
         <span>Pay</span>
-      </RouterLink>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
 import { reactive, ref, onMounted } from "vue";
-import { onBeforeRouteLeave, useRouter } from "vue-router";
+import {  useRouter } from "vue-router";
 
 const router = useRouter();
 
@@ -77,14 +77,15 @@ function setSeats(id) {
   state.book.cseat.push(id);
 }
 
-onBeforeRouteLeave(() => {
+function book() {
   if (!state.book.cseat.length) {
     state.book.error = "Please Choose Seats for Booking";
     return false;
   }
   userdata.value.order.seat = state.book.cseat;
   sessionStorage.setItem("user", JSON.stringify(userdata.value));
-});
+  return router.push('/payment')
+}
 
 onMounted(() => {
   const temp = document.getElementsByClassName("seat");

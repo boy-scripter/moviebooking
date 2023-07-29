@@ -17,23 +17,19 @@
     </div>
 
     <div class="payment-options">
-      <RouterLink to="/history" class="PTP">Pay</RouterLink>
+      <div @click="pay" to="/history" class="PTP">Pay</div>
     </div>
   </div>
 </template>
 
 <script setup>
 import { ref } from "vue";
-import { onBeforeRouteLeave, useRouter } from "vue-router";
+import { useRouter } from "vue-router";
 
 const router = useRouter();
 
 const userdata = ref(JSON.parse(sessionStorage.getItem("user")));
 if (!userdata.value) router.push("/login");
-
-onBeforeRouteLeave(() => {
-  pay();
-});
 
 function pay() {
   const myoldseat = JSON.parse(
@@ -67,6 +63,7 @@ function pay() {
   }
 
   localStorage.setItem(userdata.value.email, JSON.stringify(db));
+  return router.push("/history");
 }
 </script>
 
@@ -133,6 +130,7 @@ function pay() {
   text-decoration: none;
   color: white;
   font-size: medium;
+  cursor: pointer;
   font-weight: 500;
   box-shadow: 8px 15px 20px hsla(245, 75%, 52%, 0.329);
 }
