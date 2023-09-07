@@ -1,57 +1,75 @@
-<template>
-  <div class="container-fluid">
-    <div class="form">
-      <h1 class="mb-5 text-center">Create Account</h1>
-      <p v-if="state.form.error">{{ state.form.error }}</p>
-      <div class="mb-3">
-        <label class="form-label">Name</label>
-        <input
-          minlength="5"
-          required
-          v-model="state.form.name"
-          type="name"
-          class="form-control"
-        />
-      </div>
-      <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Email address</label>
-        <input
-          v-model="state.form.email"
-          type="email"
-          class="form-control"
-          id="exampleInputEmail1"
-          aria-describedby="emailHelp"
-        />
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Password</label>
-        <input
-          minlength="8"
-          required
-          v-model="state.form.pwd"
-          type="password"
-          class="form-control"
-        />
-      </div>
 
-      <div class="mb-3">
-        <label class="form-label">Confirm Password</label>
-        <input
-          minlength="8"
-          v-model="state.form.cpwd"
-          type="password"
-          class="form-control"
-        />
+<template>
+  <div class="main-bg">
+    <div class="container">
+      <div class="row justify-content-center mt-5">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+          <div class="card shadow">
+            <div class="card-title text-center border-bottom">
+              <h2 class="p-3">Signup</h2>
+              <p style="color: red" v-if="state.form.error">
+                {{ state.form.error }}
+              </p>
+            </div>
+            <div class="card-body">
+              <div>
+                <div class="mb-4">
+                  <label for="username" class="form-label">name</label>
+                  <input
+                    type="email"
+                    v-model="state.form.name"
+                    class="form-control"
+                    required
+                    minlength="5"
+                  />
+                </div>
+                <div class="mb-4">
+                  <label for="username" class="form-label">Email</label>
+                  <input
+                    type="email"
+                    v-model="state.form.email"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div class="mb-4">
+                  <label for="password" class="form-label">Password</label>
+                  <input
+                    v-model="state.form.pwd"
+                    type="password"
+                    class="form-control"
+                    minlength="8"
+                    required
+                  />
+                </div>
+                <div class="mb-4">
+                  <label for="password" class="form-label"
+                    >Confirm Password</label
+                  >
+                  <input
+                    v-model="state.form.cpwd"
+                    type="password"
+                    class="form-control"
+                    required
+                    minlength="8"
+                  />
+                </div>
+                <div class="d-grid">
+                  <button
+                    @click="register"
+                    type="submit"
+                    class="btn text-light main-bg"
+                  >
+                    Register
+                  </button>
+                  <br />
+                  <router-link to="/login">Already Have account ? </router-link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <button
-        type="submit"
-        @click="register"
-        class="btn btn-primary px-4 mx-auto"
-      >
-        Signup
-      </button>
-      <br />
-      <router-link to="/login">Already Have account ? </router-link>
     </div>
   </div>
 </template>
@@ -132,3 +150,28 @@ function register() {
   router.push("/login");
 }
 </script>
+
+<style  scoped>
+.main-bg {
+  background: var(--main-bg) !important;
+  border: 1px solid transparent;
+}
+
+input:focus,
+button:focus {
+  border: 1px solid var(--main-bg) !important;
+  box-shadow: none !important;
+}
+
+
+.form-check-input:checked {
+  background-color: var(--main-bg) !important;
+  border-color: var(--main-bg) !important;
+}
+
+.card,
+.btn,
+input {
+  border-radius: 0 !important;
+}
+</style>

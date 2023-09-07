@@ -82,6 +82,11 @@ function update() {
   margin-left: 10px;
 }
 
+input{
+  background: white !important;
+  border: 1px solid black !important;
+}
+
 .name {
   width: 90%;
   margin: auto;
@@ -107,7 +112,7 @@ function update() {
   padding: 15px 20px;
   border-bottom: 1px solid #ddd;
   border-radius: 0;
-  color: #333;
+  color: white;
 }
 
 .nav-pills a.nav-link i {
@@ -122,6 +127,7 @@ function update() {
 h1 {
   font-size: 2.5rem;
   font-weight: bold;
+  color: white;
 }
 
 input:invalid {

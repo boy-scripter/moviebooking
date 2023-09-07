@@ -43,6 +43,7 @@ onMounted(() => {
   row-gap: 15px;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-auto-rows: 350px;
+  background-color: white;
 }
 
 .container-fluid > * {
@@ -50,4 +51,18 @@ onMounted(() => {
   justify-content: center;
   border: 1px solid black;
 }
+
+input:focus,
+button:focus {
+  border: 1px solid var(--main-bg) !important;
+  box-shadow: none !important;
+  background-color: var(--main-bg);
+}
+
+.form-check-input:checked {
+  background-color: var(--main-bg) !important;
+  border-color: var(--main-bg) !important;
+}
+
+
 </style>

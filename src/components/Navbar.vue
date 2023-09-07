@@ -77,11 +77,31 @@ function logout() {
 
 <style scoped>
 nav {
-  background-color: aquamarine;
+  background-color: white;
 }
 
 .navbar-brand {
-  color: purple;
+  color: rgb(0, 0, 0);
+  font-weight: 900;
+}
+input:focus,
+button:focus {
+  border: 1px solid var(--main-bg) !important;
+  box-shadow: none !important;
+  background-color: var(--main-bg);
+}
+
+.form-check-input:checked {
+  background-color: var(--main-bg) !important;
+  border-color: var(--main-bg) !important;
+}
+
+.card,
+.btn,
+input {
+   background-color: var(--main-bg);
+   border: 0px;
+  border-radius: 0 !important;
   font-weight: 900;
 }
 </style>

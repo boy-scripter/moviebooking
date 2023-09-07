@@ -1,33 +1,55 @@
 <template>
-  <div class="container-fluid">
-    <div class="form">
-      <h1 class="mb-5 text-center">Login Account</h1>
-      <p v-if="state.form.error">{{ state.form.error }}</p>
-      <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Email address</label>
-        <input
-          type="email"
-          class="form-control"
-          v-model="state.form.email"
-          id="exampleInputEmail1"
-          aria-describedby="emailHelp"
-        />
+  <div class="main-bg">
+    <div class="container">
+      <div class="row justify-content-center mt-5">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+          <div class="card shadow">
+            <div class="card-title text-center border-bottom">
+              <h2 class="p-3">Login</h2>
+              <p style="color: red" v-if="state.form.error">
+                {{ state.form.error }}
+              </p>
+            </div>
+            <div class="card-body">
+              <div>
+                <div class="mb-4">
+                  <label for="username" class="form-label">Email</label>
+                  <input
+                    type="email"
+                    v-model="state.form.email"
+                    class="form-control"
+                    id="username"
+                    required
+                  />
+                </div>
+                <div class="mb-4">
+                  <label for="password" class="form-label">Password</label>
+                  <input
+                    v-model="state.form.pwd"
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    required
+                  />
+                </div>
+                <div class="d-grid">
+                  <button
+                    @click="login"
+                    type="submit"
+                    class="btn text-light main-bg"
+                  >
+                    Login
+                  </button>
+                  <br />
+                  <router-link to="/signup"
+                    >Don't have Account Create now</router-link
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Password</label>
-        <input
-          type="password"
-          class="form-control"
-          v-model="state.form.pwd"
-          id="exampleInputPassword1"
-        />
-      </div>
-
-      <button type="submit" class="btn btn-primary px-4 mx-auto" @click="login">
-        Login
-      </button>
-      <br />
-      <router-link to="/signup">Don't have Account Create now</router-link>
     </div>
   </div>
 </template>
@@ -53,27 +75,39 @@ function login() {
     (d) => d.email == state.form.email && d.password == state.form.pwd
   );
 
-  if (index == -1) return state.form.error = 'Invalid Credentails';
+  if (index == -1) return (state.form.error = "Invalid Credentails");
   sessionStorage.setItem("user", [JSON.stringify(olddb[index])]);
   router.push("/");
 }
 </script>
 
 <style scoped>
-.container-fluid {
-  display: flex;
-  min-height: 100vh;
-  align-items: center;
-  background-color: rgb(143, 0, 209);
+
+  
+
+
+.main-bg {
+
+  background: var(--main-bg) !important;
+  border: 1px solid transparent;
+
 }
 
-.form {
-  width: 30%;
-  display: block;
-  margin: auto;
-  color: white;
-  font-weight: 900;
-  font-size: 20px;
+input:focus,
+button:focus {
+  border: 1px solid var(--main-bg) !important;
+  box-shadow: none !important;
+}
+
+.form-check-input:checked {
+  background-color: var(--main-bg) !important;
+  border-color: var(--main-bg) !important;
+}
+
+.card,
+.btn,
+input {
+  border-radius: 0 !important;
 }
 </style>
 

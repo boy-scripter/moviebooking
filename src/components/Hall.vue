@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid">
-    <div class="row m-3 p-3">
-      <h1 class="title text-center py-3 bg-warning">
+    <div class="row p-3">
+      <h1 class="title text-center py-3">
         {{ userdata.order.movie }}
       </h1>
       <div class="col-12 box">
@@ -369,11 +369,45 @@ function selectDate(time) {
 
 .box .first {
   width: 300px;
+  font-size: 22px;
 }
 
 .box .second {
   width: 100%;
   display: flex;
   gap: 35px;
+  /* justify-content: space-around; */
+  flex-wrap: wrap;
+}
+.container-fluid {
+  background-color: white !important;
+}
+
+.title {
+  background-color: #e91e63;
+  color: white;
+  font-weight: 900;
+  border-radius: 20px;
+}
+a {
+  padding: 20px;
+  color: white !important;
+}
+
+@media screen and (max-width: 600px) {
+  .box{
+    padding: 20px 30px;
+    flex-direction: column;
+    
+
+  }
+ .box .first {
+  width: unset;
+  font-size: 22px;
+}
+
+  .second{
+    justify-content: space-around;
+  }
 }
 </style>

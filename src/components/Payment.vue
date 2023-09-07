@@ -85,7 +85,7 @@ function pay() {
   top: 50%;
   transform: translate(-50%, -50%);
   max-width: 450px;
-  background-color: white;
+  background-color: white !important;
   border-radius: 20px;
   overflow: hidden;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;

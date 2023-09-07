@@ -1,10 +1,11 @@
 <template>
-  <div class="cont">
-    <h1 class="title text-center py-3 bg-warning">
+  <div class="cont p-3">
+    <h1 class="title text-center py-3">
       {{ userdata.order.movie }}
     </h1>
     <div class="mt-4 p-3 seats">
       <template v-for="(element, index) in Array(260).fill('f')" :key="index">
+       
         <i class="fa-solid fa-chair seat" @click="setSeats(index)" :id="index">
         </i>
       </template>
@@ -23,7 +24,7 @@
 
 <script setup>
 import { reactive, ref, onMounted } from "vue";
-import {  useRouter } from "vue-router";
+import { useRouter } from "vue-router";
 
 const router = useRouter();
 
@@ -84,7 +85,7 @@ function book() {
   }
   userdata.value.order.seat = state.book.cseat;
   sessionStorage.setItem("user", JSON.stringify(userdata.value));
-  return router.push('/payment')
+  return router.push("/payment");
 }
 
 onMounted(() => {
@@ -124,7 +125,8 @@ button {
   flex-wrap: wrap;
   gap: 15px;
   margin: 15px;
-  border-radius: 15px;
+  justify-content: center;
+  /* border-radius: 15px; */
 }
 
 .fa-solid {
@@ -136,17 +138,32 @@ button {
 }
 
 .price {
-  display: inline-flex;
-  gap: 8px;
-  align-items: center;
+  font-size: 24px;
+  padding: 10px 20px;
+  letter-spacing: 2px;
+  font-weight: normal;
 }
-.price {
-  font-size: 25px;
-  width: 90%;
-  margin: auto;
-  justify-content: center;
+.price:hover {
+  opacity: 0.7;
 }
+
 .text-3xl {
   font-size: 25px;
+}
+
+.cont {
+  background-color: white !important;
+}
+
+.title {
+  background-color: #e91e63;
+  color: white;
+  font-weight: 900;
+  border-radius: 20px;
+}
+
+a {
+  padding: 20px;
+  color: white !important;
 }
 </style>

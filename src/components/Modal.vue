@@ -23,7 +23,7 @@
           <template v-for="(element, index) in Array(5).fill('f')" :key="index">
             <i
               class="fa-solid fa-star star"
-              :class="[star >= index +1 ? 'color' : '']"
+              :class="[star >= index + 1 ? 'color' : '']"
               @click="fill(index + 1)"
               :id="index"
             >
@@ -33,6 +33,7 @@
         </div>
         <div class="modal-footer">
           <button
+        
             type="button"
             class="btn btn-secondary"
             data-bs-dismiss="modal"
@@ -58,6 +59,7 @@ import { defineProps, defineEmits, ref } from "vue";
 const emit = defineEmits(["update_review"]);
 const text = ref("");
 const star = ref(0);
+
 const props = defineProps({
   id: Number,
   name: String,
@@ -83,7 +85,7 @@ textarea {
   margin-inline: 5px;
   cursor: pointer;
 }
-.color{
+.color {
   color: blue;
 }
 </style>

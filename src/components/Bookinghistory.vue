@@ -48,7 +48,7 @@
       </div>
     </template>
     <template v-else>
-      <div>No Booking History</div>
+      <div style="color:white">No Booking History</div>
     </template>
   </div>
 </template>
@@ -80,6 +80,14 @@ function update_review(comment, id, star) {
 
 
 <style scoped>
+*{
+
+  font-weight: 900;
+}
+
+container-fluid{
+  background-color: white;
+}
 .color {
   color: blue !important;
 }
